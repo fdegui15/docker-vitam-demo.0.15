@@ -1,0 +1,7 @@
+
+=================================
+= VITAM development environment =
+=================================
+
+* The working repository is /devhome
+* The command to deploy VITAM is : vitam-deploy-all (to execute in /devhome)
