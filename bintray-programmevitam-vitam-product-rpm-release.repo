@@ -1,0 +1,9 @@
+#bintraybintray-programmevitam-vitam-rpm-release - packages by programmevitam from Bintray
+[bintraybintray-programmevitam-vitam-product-release]
+name=bintray-programmevitam-vitam-external-rpm-release
+baseurl=http://dl.bintray.com/programmevitam/vitam-rpm-release/centos/7/vitam-product/0.15.x
+gpgcheck=0
+repo_gpgcheck=0
+enabled=1
+
+
