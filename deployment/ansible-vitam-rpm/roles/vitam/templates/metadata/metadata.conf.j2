@@ -1,0 +1,22 @@
+
+# Configuration MongoDB
+mongoDbNodes:
+{% for server in groups['mongos'] %}
+- dbHost: {{server}}
+  dbPort: {{vitam_mongodb_port}}
+{% endfor %}
+dbName: metadata
+dbAuthentication: {{mongo_authentication}}
+dbUserName: {{mongoMetadataUser}}
+dbPassword: {{mongoMetadataPassword}}
+
+jettyConfig: jetty-config.xml
+tenants:  [ "{{ vitam_tenant_ids | join('", "') }}" ]
+
+# ElasticSearch
+clusterName: {{cluster_name}}
+elasticsearchNodes:
+{% for server in groups['hosts-elasticsearch-data'] %}
+- hostName: {{server}}
+  tcpPort: {{elasticsearch_data_tcp_port}}
+{% endfor %}

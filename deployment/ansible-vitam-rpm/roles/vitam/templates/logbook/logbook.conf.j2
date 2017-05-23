@@ -1,0 +1,24 @@
+
+# Configuration MongoDB
+mongoDbNodes:
+{% for server in groups['mongos'] %}
+- dbHost: {{server}}
+  dbPort: {{vitam_mongodb_port}}
+{% endfor %}
+dbName: logbook
+dbAuthentication: {{mongo_authentication}}
+dbUserName: {{mongoLogbookUser}}
+dbPassword: {{mongoLogbookPassword}}
+jettyConfig: jetty-config.xml
+tenants:  [ "{{ vitam_tenant_ids | join('", "') }}" ]
+p12LogbookPassword: {{keystores.timestamping.logbook}}
+p12LogbookFile: keystore_logbook.p12
+workspaceUrl: {{vitam_workspace_baseurl}}
+
+# ElasticSearch
+clusterName: {{cluster_name}}
+elasticsearchNodes:
+{% for server in groups['hosts-elasticsearch-data'] %}
+- hostName: {{server}}
+  tcpPort: {{elasticsearch_data_tcp_port}}
+{% endfor %}

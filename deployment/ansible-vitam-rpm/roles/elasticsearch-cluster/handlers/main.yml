@@ -1,0 +1,14 @@
+---
+# handlers file for elasticsaerch-cluster
+- name: restart elasticsearch
+  service:
+    name: vitam-{{cluster_name}}
+    state: restarted
+
+- name: create systemd tmpfiles
+  command: systemd-tmpfiles --create
+
+- name: reload consul configuration
+  service:
+    name: vitam-consul
+    state: reloaded
